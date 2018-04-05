@@ -1,59 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>/
+<head>
 	<title>Giphy app</title>
+	<!-- bootstrap css -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!--my stylesheet-->
+	 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	 <!-- google fonts -->
+	 <link href="https://fonts.googleapis.com/css?family=Subrayada|Warnes" rel="stylesheet">
 </head>
 <body>
-
-<div id="celeb-buttons"></div>
-
-<div id="gif-here"></div>
-
-<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
-<script type="text/javascript">
-
-	var topics = ["Emma Stone", "Chris Pratt", "Amy Poehler", "Will Ferrell", "Kristen Wiig", "Steve Carell", "Kim Kardashian", "John Krasinski", "Kanye", "Britney Spears", "James Cordon", "Tyra Banks", 
-			"Jennifer Lawrence", "Miley Cyrus", "Ben Stiller", "Tom Hiddleston", "Justin Timberlake", "Jonah Hill"]
 	
+<br>
+<div id="container">
+  	<div class="neon">Giphy</div>
+  	<div class="flux">Generator</div>
+</div>
+<br>
 
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q + topic + =&api_key=dc6zaTOxFJmzC";   
+<br>
+<div class="container">
+<!-- div to hold generated buttons -->
+	<div id="celeb-buttons">
+	</div>
+	<br>
 
-// Append string from array to buttons 
-	for(var i = 0; i < length.topics; i++){
+<!-- form for generating buttons from giphy API -->
+	<div class="row">
+	  <div class="col-lg-6">
+	    <div class="input-group" id="giphy-form">
+	      <input type="text" id="celeb-input" class="form-control" placeholder="Search for a celebrity">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" id="add-celeb" type="button" value="submit">Add celebrity button</button>
+	      </span>
+	    </div>
+	  </div>
+	</div>
 
-	};
+<!-- div to hold gifs once button is clicked -->
+	<div id="gif-here">
+	</div>
 
-// ajax request
-	$.ajax({url:queryURL, method: 'GET'})
-		.done(function(response){
-			console.log(response);
+</div>
 
-//storing data
-		var results = response.data;
-
-//loop for results after button is clicked
-		for (var i = 0; i < results.length; i++) {
-
-			var celebDiv = $("<div>");
-			var p = $("<p>").text("Rating: " + results[i].rating);
-			var celebImage = $("<img>");
-			celebImage.attr("src", results[i].images_fixed_height.url);
-
-			// appending
-			celebDiv.append(p);
-			celebDiv.append(celebImage);
-
-			//prepend
-			$("#gif-here").prepend(celebDiv);
-		}
-	});
-
-
-
-
-
-</script>
-
+	<!--jquery-->
+	<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>	
+	<!-- bootstrap CDN -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!--my js-->
+	<script src="giphy.js"></script>
 
 </body>
 </html>
