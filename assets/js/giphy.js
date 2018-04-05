@@ -24,7 +24,7 @@ function populateButtons(topics, classToAdd, areaToAddTo){
 $(document).on('click','.celeb-button', function(){
 	$('#gif-here').empty();
 	var type = $(this).data('type');
-	var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=dc6zaTOxFJmzC&limit=10'; 
+	var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=dc6zaTOxFJmzC&limit=10'; 
     // // ajax request
 	$.ajax({url:queryURL, method:'GET'})
 		.done(function(response){
